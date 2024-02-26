@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Ticket Availability</title>
+</head>
+<body>
+<h1>Check Ticket Availability</h1>
+<form id="ticketForm">
+  <label for="ticketId">Enter Ticket ID:</label>
+  <input type="text" id="ticketId" name="ticketId" required>
+  <button type="submit">Check Availability</button>
+</form>
+
+<div id="result"></div>
+
+<button onclick="goToMainPage()">Back to Main Page</button>
+
+<script>
+    document.getElementById("ticketForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var ticketId = document.getElementById("ticketId").value;
+
+        if (!/^\d+$/.test(ticketId)) {
+            document.getElementById("result").innerHTML = "Ticket ID must contain only digits.";
+            return;
+        }
+
+        fetch("/tickets/checkTicketId/" + ticketId)
+            .then(response => response.json())
+            .then(data => {
+                var resultDiv = document.getElementById("result");
+                if (data) {
+                    resultDiv.innerHTML = "Ticket is available.";
+                } else {
+                    resultDiv.innerHTML = "Ticket is not available.";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    function goToMainPage() {
+        window.location.href = "/flightsControl";
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Flights Control</title>
+</head>
+<body>
+<h2>Welcome to Flights Control</h2>
+<div>
+  <a th:href="@{/flightsControl/checkTicketId}">
+    <button>Check Ticket</button>
+  </a>
+</div>
+<div>
+  <a th:href="@{/flightsControl/performCheckIn}">
+    <button>Perform Check-In</button>
+  </a>
+</div>
+<div>
+  <a th:href="@{/flightsControl/applyCoupon}">
+    <button>Apply Coupon</button>
+  </a>
+</div>
+</body>
+</html>

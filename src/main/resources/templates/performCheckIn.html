@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perform Check-In</title>
+</head>
+<body>
+<h1>Perform Check-In</h1>
+
+<form id="checkInForm" th:action="@{/check-ins/performCheckIn}" method="post" th:object="${checkIn}">
+    <label for="destinationId">Enter Destination ID:</label>
+    <input type="text" id="destinationId" name="destinationId" th:field="*{destinationId}" required>
+
+    <label for="baggageId">Enter Baggage ID:</label>
+    <input type="text" id="baggageId" name="baggageId" th:field="*{baggageId}" required>
+
+    <button type="submit">Perform Check-In</button>
+</form>
+
+<form th:action="@{/flightsControl}" method="get">
+    <button type="submit">Back to Main Page</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-In Result</title>
+</head>
+<body>
+<h1>Check-In Result</h1>
+
+<div th:if="${isCheckInSuccessful}">
+  Check-In successful.
+</div>
+<div th:unless="${isCheckInSuccessful}">
+  Check-In failed.
+</div>
+
+<form th:action="@{/flightsControl}" method="get">
+  <button type="submit">Back to Main Page</button>
+</form>
+</body>
+</html>
